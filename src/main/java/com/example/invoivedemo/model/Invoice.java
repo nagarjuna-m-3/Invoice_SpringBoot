@@ -7,6 +7,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.time.LocalDate;
 
 @Getter
 @Setter
@@ -24,7 +25,7 @@ public class Invoice implements Serializable {
     private String city;
     private Integer code;
     private String country;
-    private String dueDate;
+    private LocalDate dueDate;
     private String description;
     private Double total;
     private Boolean isPaid;

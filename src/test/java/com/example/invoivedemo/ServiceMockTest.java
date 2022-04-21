@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 
+import java.time.LocalDate;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -34,7 +35,7 @@ public class ServiceMockTest {
                 "mys",
                 23423,
                 "in",
-                "sdf",
+                LocalDate.now(),
                 "asdsd",
                 500d,
                 true)).collect(Collectors.toList()));
@@ -52,7 +53,7 @@ public class ServiceMockTest {
     public void saveInvoiceTest(){
         Invoice invoice = new Invoice(4L,"seenu", "abc@gmail.com",
                 "Stett", "Mysore", 2342344, "fsd",
-                "dfgbdf","dfgfg", 450d, false);
+                LocalDate.now(),"dfgfg", 450d, false);
         when(invoiceRepo.save(invoice)).thenReturn(invoice);
         assertEquals(invoice,invoiceService.addInvoice(invoice));
     }
@@ -67,7 +68,7 @@ public void UpdateTest(){
                 "mys",
                 23423,
                 "in",
-                "sdf",
+                LocalDate.now(),
                 "asdsd",
                 500d,
                 true);
@@ -81,7 +82,7 @@ public void UpdateTest(){
     public void DeleteTest(){
         Invoice deltest = new Invoice(4L,"John", "test@gmail.com",
                 "sddfds", "Mysore", 2342344, "fsd",
-                "10/12/15","hkujkj", 450d, true);
+                LocalDate.now(),"hkujkj", 450d, true);
         invoiceService.deleteInvoice(deltest.getId());
         assertThat(invoiceRepo.existsById(4L)).isFalse();
     }

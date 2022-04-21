@@ -14,6 +14,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 
+import java.time.LocalDate;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -46,7 +47,7 @@ class InvoiceApplicationTests {
 		p.setCity("Ms");
 		p.setCode(4564654);
 		p.setCountry("Ind");
-		p.setDueDate("2002-07-14T18:30:00.000Z");
+		p.setDueDate(LocalDate.parse("2020-01-08"));
 		p.setDescription("hsfbd");
 		p.setTotal(5000d);
 		p.setIsPaid(true);
@@ -69,8 +70,8 @@ class InvoiceApplicationTests {
 	@Order(4)
 	@Rollback
 	public void testDelete () {
-		invoiceRepo.deleteById(2L);
-		assertThat(invoiceRepo.existsById(2L)).isFalse();
+		invoiceRepo.deleteById(1L);
+		assertThat(invoiceRepo.existsById(1L)).isFalse();
 	}
 
 }
